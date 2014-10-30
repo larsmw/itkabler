@@ -68,3 +68,5 @@ dependencies[] = commerce_shipping_ui
 
 ;features
 dependencies[] = site_configuration
+dependencies[] = shop_settings
+

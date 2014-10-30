@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the shop settings feature.
+ */
+
+include_once 'shop_settings.features.inc';
