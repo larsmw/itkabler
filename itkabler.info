@@ -29,6 +29,9 @@ dependencies[] = views
 ;dependencies[] = views_content
 dependencies[] = views_ui
 
+dependencies[] = feeds
+dependencies[] = feeds_ui
+
 dependencies[] = linkit
 
 dependencies[] = addressfield
