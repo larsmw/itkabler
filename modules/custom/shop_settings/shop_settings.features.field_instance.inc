@@ -13,7 +13,17 @@ function shop_settings_field_default_field_instances() {
   // Exported field_instance: 'commerce_customer_profile-billing-commerce_customer_address'
   $field_instances['commerce_customer_profile-billing-commerce_customer_address'] = array(
     'bundle' => 'billing',
-    'default_value' => NULL,
+    'default_value' => array(
+      0 => array(
+        'element_key' => 'commerce_customer_profile|billing|commerce_customer_address|und|0',
+        'thoroughfare' => '',
+        'premise' => '',
+        'postal_code' => '',
+        'locality' => '',
+        'country' => 'DK',
+        'name_line' => '',
+      ),
+    ),
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -57,17 +67,23 @@ function shop_settings_field_default_field_instances() {
     'entity_type' => 'commerce_customer_profile',
     'field_name' => 'commerce_customer_address',
     'label' => 'Address',
-    'required' => TRUE,
+    'required' => 1,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
     'widget' => array(
+      'active' => 1,
       'module' => 'addressfield',
       'settings' => array(
-        'available_countries' => array(),
+        'available_countries' => array(
+          'DK' => 'DK',
+        ),
         'format_handlers' => array(
-          0 => 'address',
-          1 => 'name-oneline',
+          'address' => 'address',
+          'name-oneline' => 'name-oneline',
+          'address-hide-country' => 0,
+          'organisation' => 0,
+          'name-full' => 0,
         ),
       ),
       'type' => 'addressfield_standard',
@@ -78,7 +94,17 @@ function shop_settings_field_default_field_instances() {
   // Exported field_instance: 'commerce_customer_profile-shipping-commerce_customer_address'
   $field_instances['commerce_customer_profile-shipping-commerce_customer_address'] = array(
     'bundle' => 'shipping',
-    'default_value' => NULL,
+    'default_value' => array(
+      0 => array(
+        'element_key' => 'commerce_customer_profile|shipping|commerce_customer_address|und|0',
+        'thoroughfare' => '',
+        'premise' => '',
+        'postal_code' => '',
+        'locality' => '',
+        'country' => 'DK',
+        'name_line' => '',
+      ),
+    ),
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -122,17 +148,23 @@ function shop_settings_field_default_field_instances() {
     'entity_type' => 'commerce_customer_profile',
     'field_name' => 'commerce_customer_address',
     'label' => 'Address',
-    'required' => TRUE,
+    'required' => 1,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
     'widget' => array(
+      'active' => 1,
       'module' => 'addressfield',
       'settings' => array(
-        'available_countries' => array(),
+        'available_countries' => array(
+          'DK' => 'DK',
+        ),
         'format_handlers' => array(
-          0 => 'address',
-          1 => 'name-oneline',
+          'address' => 'address',
+          'name-oneline' => 'name-oneline',
+          'address-hide-country' => 0,
+          'organisation' => 0,
+          'name-full' => 0,
         ),
       ),
       'type' => 'addressfield_standard',
@@ -181,7 +213,7 @@ function shop_settings_field_default_field_instances() {
           'calculation' => 'calculated_sell_price',
         ),
         'type' => 'commerce_price_formatted_amount',
-        'weight' => 0,
+        'weight' => 2,
       ),
       'full' => array(
         'label' => 'hidden',
@@ -243,12 +275,9 @@ function shop_settings_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'commerce_price',
-        'settings' => array(
-          'calculation' => FALSE,
-        ),
-        'type' => 'commerce_price_formatted_amount',
-        'weight' => 1,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 7,
       ),
       'line_item' => array(
         'label' => 'above',
@@ -278,6 +307,175 @@ function shop_settings_field_default_field_instances() {
       ),
       'type' => 'commerce_price_full',
       'weight' => 3,
+    ),
+  );
+
+  // Exported field_instance: 'commerce_product-product-field_group'
+  $field_instances['commerce_product-product-field_group'] = array(
+    'bundle' => 'product',
+    'commerce_cart_settings' => array(
+      'attribute_field' => 0,
+      'attribute_widget' => 'select',
+      'attribute_widget_title' => 'Group',
+    ),
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'commerce_product_in_cart' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 4,
+      ),
+      'line_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'node_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'commerce_product',
+    'field_name' => 'field_group',
+    'label' => 'Group',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_select',
+      'weight' => 7,
+    ),
+  );
+
+  // Exported field_instance: 'commerce_product-product-field_vendor'
+  $field_instances['commerce_product-product-field_vendor'] = array(
+    'bundle' => 'product',
+    'commerce_cart_settings' => array(
+      'attribute_field' => 0,
+      'attribute_widget' => 'select',
+      'attribute_widget_title' => 'Vendor',
+    ),
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'commerce_product_in_cart' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 3,
+      ),
+      'line_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'node_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'commerce_product',
+    'field_name' => 'field_vendor',
+    'label' => 'Vendor',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'taxonomy',
+      'settings' => array(
+        'autocomplete_path' => 'taxonomy/autocomplete',
+        'size' => 60,
+      ),
+      'type' => 'taxonomy_autocomplete',
+      'weight' => 6,
+    ),
+  );
+
+  // Exported field_instance: 'commerce_product-product-field_weight'
+  $field_instances['commerce_product-product-field_weight'] = array(
+    'bundle' => 'product',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'commerce_product_in_cart' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'module' => 'number',
+        'settings' => array(
+          'decimal_separator' => '.',
+          'prefix_suffix' => TRUE,
+          'scale' => 2,
+          'thousand_separator' => ' ',
+        ),
+        'type' => 'number_decimal',
+        'weight' => 5,
+      ),
+      'line_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'node_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'commerce_product',
+    'field_name' => 'field_weight',
+    'label' => 'Weight',
+    'required' => 0,
+    'settings' => array(
+      'max' => '',
+      'min' => '',
+      'prefix' => '',
+      'suffix' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'number',
+      'settings' => array(),
+      'type' => 'number',
+      'weight' => 5,
     ),
   );
 
@@ -333,7 +531,20 @@ function shop_settings_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
+        'module' => 'commerce_cart',
+        'settings' => array(
+          'combine' => 1,
+          'default_quantity' => 1,
+          'line_item_type' => 'product',
+          'show_quantity' => 0,
+          'show_single_product_attributes' => 0,
+        ),
+        'type' => 'commerce_cart_add_to_cart_form',
+        'weight' => 1,
+      ),
+      'teaser' => array(
+        'label' => 'hidden',
         'module' => 'commerce_cart',
         'settings' => array(
           'combine' => TRUE,
@@ -343,13 +554,7 @@ function shop_settings_field_default_field_instances() {
           'show_single_product_attributes' => FALSE,
         ),
         'type' => 'commerce_cart_add_to_cart_form',
-        'weight' => 1,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 2,
       ),
     ),
     'entity_type' => 'node',
@@ -380,8 +585,11 @@ function shop_settings_field_default_field_instances() {
   // Included for use with string extractors like potx.
   t('Address');
   t('Body');
+  t('Group');
   t('Price');
   t('Product');
+  t('Vendor');
+  t('Weight');
   t('dcs_price');
 
   return $field_instances;
